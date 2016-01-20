@@ -1,7 +1,6 @@
 package com.alg.androidbtcontrol;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,8 +18,7 @@ public class LivingRoomActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_living_room);
 		
-		Intent i = getIntent();
-		btClass = (BluetoothClass)i.getSerializableExtra("btObject");
+		btClass = (BluetoothClass)getIntent().getSerializableExtra(MainActivity.SER_KEY);
 		
 		btOn = (Button)findViewById(R.id.btnOn);
 		btOn.setOnClickListener(new OnClickListener() {

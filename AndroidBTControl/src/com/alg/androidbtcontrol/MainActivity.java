@@ -25,6 +25,8 @@ public class MainActivity extends Activity implements OnItemClickListener{
 
 	ArrayList<BluetoothDevice> btList;
 	private static final int REQUEST_ENABLE_BT = 1;
+	
+	public static final String SER_KEY = "com.alg.androidbtcontol.ser";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,11 @@ public class MainActivity extends Activity implements OnItemClickListener{
 		DeviceBtAdapter btAdapter = new DeviceBtAdapter(this, 0, btList);
 		list.setAdapter(btAdapter);
 
-
 		//CONFIRMANDO ADAPTADOR HABILITADO
 		if (!btClass.isEnabled()) {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+			
 		}
 
 	}
@@ -75,9 +77,13 @@ public class MainActivity extends Activity implements OnItemClickListener{
 		btClass.connect(index);
 		if(btClass.isConnected()){
 			Toast.makeText(this, "Dispositivo Conectado", Toast.LENGTH_LONG).show();
+			
 			Intent i = new Intent(this, LivingRoomActivity.class);
-			i.putExtra("btObject", btClass);
+			Bundle bundle = new Bundle();
+			bundle.putSerializable(SER_KEY, btClass);
+			i.putExtras(bundle);
 			this.startActivity(i);
+			
 		}
 		else Toast.makeText(this, "Dispositivo No Conectado", Toast.LENGTH_LONG).show();
 	}

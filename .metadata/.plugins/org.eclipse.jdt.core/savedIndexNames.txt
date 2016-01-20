@@ -1,8 +1,7 @@
-INDEX VERSION 1.127+C:\Disco_D\Documentos\workspaces\Varios\.metadata\.plugins\org.eclipse.jdt.core
-4115499391.index
-1966801138.index
-2809635407.index
-52172906.index
+INDEX VERSION 1.127+D:\Documentos\MIS DOCUMENTOS ABEL\my_workspace\workspace_android_casa\Bluetooth\.metadata\.plugins\org.eclipse.jdt.core
 1093891519.index
+507496357.index
+373760915.index
+3095469674.index
+4115499391.index
 1519966634.index
-29981568.index

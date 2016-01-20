@@ -21,7 +21,7 @@ public class BluetoothClass implements Serializable{
 	BluetoothSocket btSocket;
 
 	ArrayList<BluetoothDevice> btList;
-
+	
 	private static final String UUID_CODE = "00001101-0000-1000-8000-00805F9B34FB";
 
 
@@ -53,7 +53,7 @@ public class BluetoothClass implements Serializable{
 	
 	
 	public boolean isEnabled(){
-		if(btAdapter!=null) return true;
+		if(btAdapter.isEnabled()) return true;
 		return false;
 	}
 	
@@ -100,5 +100,8 @@ public class BluetoothClass implements Serializable{
 	public ArrayList<BluetoothDevice> getArrayList(){
 		return btList;
 	}
+
+
+
 
 }
