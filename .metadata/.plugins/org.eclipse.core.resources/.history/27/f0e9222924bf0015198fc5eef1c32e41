@@ -1,0 +1,30 @@
+package com.alg.androidbtcontrol;
+
+import java.util.ArrayList;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.util.Log;
+
+public class BluetoothClass {
+
+	BluetoothAdapter btAdapter;
+	BluetoothSocket btSocket;
+
+	ArrayList<BluetoothDevice> btList;
+
+	private static final String UUID_CODE = "00001101-0000-1000-8000-00805F9B34FB";
+
+
+	public BluetoothClass(){
+		//HABILITAMOS EL ADAPTADOR --------------------------------
+		btAdapter = BluetoothAdapter.getDefaultAdapter();
+		if (btAdapter == null) {
+			Log.d("BluetoothUtils -- ","Status: not supported");
+			return;
+		}
+
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.alg.adapter;
+
+import java.util.ArrayList;
+
+import android.bluetooth.BluetoothDevice;
+import android.content.Context;
+import android.widget.ArrayAdapter;
+
+public class DeviceBtAdapter extends ArrayAdapter<BluetoothDevice>{
+
+	public DeviceBtAdapter(Context context, int resource,
+			ArrayList<BluetoothDevice> list) {
+		super(context, resource, list);
+		// TODO Auto-generated constructor stub
+	}
+
+}

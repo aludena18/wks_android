@@ -1,0 +1,63 @@
+package com.alg.androidbtcontrol;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ListView;
+
+import com.alg.adapter.BluetoothAdapter;
+
+public class MainActivity extends Activity {
+
+	ListView list;
+	BluetoothClass btClass;
+
+	ArrayList<BluetoothDevice> btList;
+	private static final int REQUEST_ENABLE_BT = 1;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
+		btClass = new BluetoothClass();
+
+		list = (ListView)findViewById(R.id.lvLista);
+
+		btList = btClass.getArrayList();
+		BluetoothAdapter btAdapter = new BluetoothAdapter(this, 0, btList);
+		list.setAdapter(btAdapter);
+
+		
+		//CONFIRMANDO ADAPTADOR HABILITADO
+		if (!btClass.isEnabled()) {
+			Intent enableBtIntent = new Intent(android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
+			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+		}
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

@@ -1,0 +1,69 @@
+package com.alg.androidbtcontrol;
+
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.UUID;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.util.Log;
+
+public class BluetoothClass {
+
+	BluetoothAdapter btAdapter;
+	BluetoothSocket btSocket;
+
+	ArrayList<BluetoothDevice> btList;
+
+	private static final String UUID_CODE = "00001101-0000-1000-8000-00805F9B34FB";
+
+
+	public BluetoothClass(){
+
+		//HABILITAMOS EL ADAPTADOR --------------------------------
+		btAdapter = BluetoothAdapter.getDefaultAdapter();
+		if (btAdapter == null) {
+			Log.d("BluetoothUtils -- ","Status: not supported");
+			return;
+		}
+
+
+
+		//CREANDO LISTA DE DISPOSITIVOS CONFIABLES ----------------------------------
+		Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
+		if (pairedDevices.size() > 0) {
+			for (BluetoothDevice device : pairedDevices) {
+				//mArrayAdapter.add(device.getName() + "\n" + device.getAddress());
+				btList.add(device);
+				Log.d("BluetoothUtils -- pairedDevices", device.getName());
+			}
+		}
+
+	}
+	
+	public boolean isEnabled(){
+		if(btAdapter!=null) return true;
+		return false;
+	}
+	
+	
+	
+	public boolean connect(int position){
+		if (position<0 || position>=btList.size())
+			return false;
+
+		try{
+			BluetoothDevice btDev = btList.get(position);
+			btSocket = btDev.createInsecureRfcommSocketToServiceRecord(UUID.fromString(UUID_CODE));
+			btSocket.connect();
+			Log.d("MainActivity --", "socket conectado");
+			return true;
+		} catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+
+}
