@@ -18,6 +18,8 @@ public class LivingRoomActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_living_room);
 		
+		btClass = MainActivity
+		
 		btOn = (Button)findViewById(R.id.btnOn);
 		btOn.setOnClickListener(new OnClickListener() {
 			

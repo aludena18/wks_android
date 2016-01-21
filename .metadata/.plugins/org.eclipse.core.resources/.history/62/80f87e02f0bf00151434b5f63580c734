@@ -21,7 +21,7 @@ import com.alg.adapter.DeviceBtAdapter;
 public class MainActivity extends Activity implements OnItemClickListener{
 
 	ListView list;
-	public BluetoothClass btClass;
+	BluetoothClass btClass;
 
 	ArrayList<BluetoothDevice> btList;
 	private static final int REQUEST_ENABLE_BT = 1;
@@ -79,7 +79,10 @@ public class MainActivity extends Activity implements OnItemClickListener{
 			Toast.makeText(this, "Dispositivo Conectado", Toast.LENGTH_LONG).show();
 			
 			Intent i = new Intent(this, LivingRoomActivity.class);
-			startActivity(i);
+			Bundle bundle = new Bundle();
+			bundle.putSerializable(SER_KEY, btClass);
+			i.putExtras(bundle);
+			this.startActivity(i);
 			
 		}
 		else Toast.makeText(this, "Dispositivo No Conectado", Toast.LENGTH_LONG).show();
