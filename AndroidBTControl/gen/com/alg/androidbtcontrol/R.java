@@ -25,9 +25,10 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080004;
+        public static final int action_settings=0x7f080005;
+        public static final int btnOff=0x7f080003;
         public static final int btnOn=0x7f080002;
-        public static final int lvLista=0x7f080003;
+        public static final int lvLista=0x7f080004;
         public static final int txvAddress=0x7f080001;
         public static final int txvName=0x7f080000;
     }
@@ -43,6 +44,7 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
+        public static final int etqBtnOff=0x7f050007;
         public static final int etqBtnOn=0x7f050005;
         public static final int etqTxvAddress=0x7f050004;
         public static final int etqTxvName=0x7f050003;

@@ -69,6 +69,17 @@ public class BluetoothClass {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	public void disconnect(){
+		try {
+			btSocket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 

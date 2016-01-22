@@ -4,9 +4,12 @@
     <string name="app_name">Android BT Control</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
     <string name="etqTxvName">Empty</string>
     <string name="etqTxvAddress">Empty</string>
     <string name="etqBtnOn">Encender</string>
+    
     <string name="title_activity_living_room">LivingRoomActivity</string>
+    <string name="etqBtnOff">Apagar</string>
 
 </resources>

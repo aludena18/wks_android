@@ -21,7 +21,7 @@ import com.alg.adapter.DeviceBtAdapter;
 public class MainActivity extends Activity implements OnItemClickListener{
 
 	ListView list;
-	public BluetoothClass btClass;
+	public static BluetoothClass btClass;
 
 	ArrayList<BluetoothDevice> btList;
 	private static final int REQUEST_ENABLE_BT = 1;
@@ -69,6 +69,23 @@ public class MainActivity extends Activity implements OnItemClickListener{
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		Log.d("MainActivity --", "ON_RESTART");
+		if(!btClass.isConnected()){
+			Toast.makeText(this, "Deconectado", Toast.LENGTH_LONG).show();
+		}
+		else {
+			btClass.disconnect();
+			Toast.makeText(this, "Dispositivo Deconectado", Toast.LENGTH_LONG).show();
+		}
+	}
+	
+	
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int index, long arg3) {
@@ -84,4 +101,6 @@ public class MainActivity extends Activity implements OnItemClickListener{
 		}
 		else Toast.makeText(this, "Dispositivo No Conectado", Toast.LENGTH_LONG).show();
 	}
+	
+	
 }

@@ -2,6 +2,7 @@ package com.alg.androidbtcontrol;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 public class LivingRoomActivity extends Activity {
 	Button btOn;
+	Button btOff;
 	
 	BluetoothClass btClass;
 
@@ -18,13 +20,23 @@ public class LivingRoomActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_living_room);
 		
+		btClass = MainActivity.btClass;
+		
 		btOn = (Button)findViewById(R.id.btnOn);
 		btOn.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				btClass.send(49);
+			}
+		});
+		
+		btOff = (Button)findViewById(R.id.btnOff);
+		btOff.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				btClass.send(50);
 			}
 		});
 		
@@ -48,4 +60,29 @@ public class LivingRoomActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		Log.d("LivingRoomActivity --", "ON_DESTROY");
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		Log.d("LivingRoomActivity --", "ON_PAUSE");
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Log.d("LivingRoomActivity --", "ON_STOP");
+		btClass.disconnect();
+	}
+	
+	
+	
 }
